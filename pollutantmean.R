@@ -1,12 +1,14 @@
 pollutantmean <- function(directory, pollutant, id = 1:332){
+  directory <- paste("C:/Users/sshukla/class_2",directory, sep="/") 
   setwd(directory)
   data.files<- list.files()
-  df <-read.csv(na.omit(data.files[1]),header= TRUE,na.strings = "NA")
-  id <- id+1
+  newdf <- NULL
   for (i in id){
-    newdf<-read.csv(na.omit(data.files[i]), header=TRUE,na.strings = "NA")
-    df<-rbind(df,newdf)
+          
+    df <-read.csv(data.files[i],header= TRUE,na.strings = "NA")
+    newdf<-rbind(df,newdf)
   }
-  m<- mean(df$pollutant, na.rm=TRUE)
+  
+  m<- mean(newdf[,pollutant], na.rm=TRUE)
   m
 }
