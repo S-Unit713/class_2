@@ -13,6 +13,6 @@ complete <- function(directory, id= 1:332){
   }
   m<- cbind(id, as.numeric(m)) 
   colnames(m)<- c("id","nobs")
-  m
+  data.frame(m)
 }
 
